@@ -17,9 +17,9 @@ class UserProfileManager(BaseUserManager):
         user = self.model(email= email, name=name)
 
         user.set_password(password)
-        user.save(usimg= self._db)
+        user.save(using= self._db)
 
-        return User
+        return user
     def create_superuser(self, email, name, password):
         """Creat and Save a new superuser with given details"""
         user = self.create_user(email, name, password)
@@ -30,7 +30,7 @@ class UserProfileManager(BaseUserManager):
         user.is_staff = True
         user.save(using=self._db)
 
-        return User
+        return user
 
 
 
